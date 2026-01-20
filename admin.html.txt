@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+</head>
+<body>
+
+<h2>Pedidos recibidos</h2>
+
+<table border="1">
+<tbody id="tabla"></tbody>
+</table>
+
+<script>
+const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+const tabla = document.getElementById("tabla");
+
+pedidos.forEach(p => {
+  tabla.innerHTML += `
+    <tr>
+      <td>${p.fecha}</td>
+      <td>${p.nombre}</td>
+      <td>${p.tarea}</td>
+      <td>${p.estado}</td>
+    </tr>
+  `;
+});
+</script>
+
+</body>
+</html>

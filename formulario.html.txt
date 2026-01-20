@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Formulario</title>
+</head>
+<body>
+
+<h2>Datos del cliente</h2>
+
+<input id="nombre" placeholder="Nombre"><br><br>
+<input id="email" placeholder="Email"><br><br>
+
+<button onclick="guardar()">Enviar</button>
+
+<script>
+function guardar() {
+  const d = JSON.parse(localStorage.getItem("checkout"));
+  const pedidos = JSON.parse(localStorage.getItem("pedidos")) || [];
+
+  pedidos.push({
+    fecha: new Date().toLocaleString(),
+    nombre: document.getElementById("nombre").value,
+    email: document.getElementById("email").value,
+    tarea: d.tarea,
+    provincia: d.provincia,
+    pack: d.pack,
+    precio: d.precio,
+    estado: "Pendiente"
+  });
+
+  localStorage.setItem("pedidos", JSON.stringify(pedidos));
+  window.location.href = "generar-pdf.html";
+}
+</script>
+
+</body>
+</html>

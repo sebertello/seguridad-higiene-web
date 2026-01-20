@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Generar PDF</title>
+</head>
+<body>
+
+<button onclick="generar()">Descargar PDF</button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="js/tareas.js"></script>
+
+<script>
+function generar() {
+  const { jsPDF } = window.jspdf;
+  const d = JSON.parse(localStorage.getItem("checkout"));
+  const t = tareas[d.tarea];
+
+  const pdf = new jsPDF();
+  let y = 10;
+
+  pdf.text("INFORME DE SEGURIDAD E HIGIENE", 10, y); y += 10;
+  pdf.text("Tarea: " + t.nombre, 10, y); y += 10;
+
+  t.riesgos.forEach(r => {
+    pdf.text("- " + r, 10, y);
+    y += 8;
+  });
+
+  pdf.save("Informe_Seguridad.pdf");
+}
+</script>
+
+</body>
+</html>

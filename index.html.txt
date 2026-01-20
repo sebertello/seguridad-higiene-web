@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Informes de Seguridad e Higiene</title>
+</head>
+<body>
+
+<h1>Informes de Seguridad e Higiene</h1>
+
+<label>Tarea:</label>
+<select id="tarea">
+  <option value="altura">Trabajo en Altura</option>
+  <option value="electricidad">Riesgo Eléctrico</option>
+</select>
+
+<br><br>
+
+<label>Provincia:</label>
+<select id="provincia">
+  <option>Córdoba</option>
+  <option>Buenos Aires</option>
+  <option>Santa Fe</option>
+</select>
+
+<br><br>
+
+<label>Pack:</label>
+<select id="pack">
+  <option value="12900">Pack Básico</option>
+  <option value="27900">Pack Obra</option>
+  <option value="39900">Pack Premium</option>
+</select>
+
+<br><br>
+
+<button onclick="irCheckout()">Continuar</button>
+
+<script>
+function irCheckout() {
+  localStorage.setItem("checkout", JSON.stringify({
+    tarea: document.getElementById("tarea").value,
+    provincia: document.getElementById("provincia").value,
+    pack: document.getElementById("pack").options[pack.selectedIndex].text,
+    precio: document.getElementById("pack").value
+  }));
+  window.location.href = "checkout.html";
+}
+</script>
+
+</body>
+</html>

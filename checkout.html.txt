@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Checkout</title>
+</head>
+<body>
+
+<h2>Confirmar contratación</h2>
+
+<p>Tarea: <span id="tarea"></span></p>
+<p>Provincia: <span id="provincia"></span></p>
+<p>Pack: <span id="pack"></span></p>
+<p><strong>Total a pagar: $<span id="precio"></span></strong></p>
+
+<p>Pago por transferencia</p>
+<p><strong>Alias / CBU:</strong> sb.hys.mp</p>
+
+<button onclick="continuar()">Ya realicé el pago</button>
+
+<script>
+const d = JSON.parse(localStorage.getItem("checkout"));
+document.getElementById("tarea").innerText = d.tarea;
+document.getElementById("provincia").innerText = d.provincia;
+document.getElementById("pack").innerText = d.pack;
+document.getElementById("precio").innerText = d.precio;
+
+function continuar() {
+  window.location.href = "formulario.html";
+}
+</script>
+
+</body>
+</html>
